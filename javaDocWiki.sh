@@ -25,7 +25,7 @@ __REPO_NOT_UPDT=4             # respository is up to date
 SFT_INSTALLED=1               # flag to check if all necessary
 			      # software is installed
 
-__TMP_FILE=/tmp/suzjavbot     # file with last revisions
+__TMP_FILE=~/.suzjavbot       # file with last revisions
 
 # checks if software is installed
 function check_if_installed {
@@ -136,7 +136,7 @@ function main {
 	    cd `dirname $1` && svn checkout $SVN_URL --quiet
 
 	    # last revision's number from repository
-	    SVN_LST=`svn info $1 | grep Wersja | cut -d" " -f2`
+	    SVN_LST=`svn info $1 | grep Revision | cut -d" " -f2`
 	    REPODIR=`echo $1 | sed -e 's/\//____/g'`
 
 	    # last revision's number from $__TMP_FILE
