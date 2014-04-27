@@ -101,8 +101,8 @@ function main {
         if [ -f $__TMP_FILE ]; then
 	    LASTREVGITFILE=`cat $__TMP_FILE | grep "$REPODIR" | cut -d"=" -f2`
 	else
-	    #BUG?
-	    LASTREVGITFILE=`HEAD~1`
+	    # first commit ever
+	    LASTREVGITFILE=`git log --pretty=format:%H | tail -1`
 	fi
 
         # if repository was updated -- create doc and wiki page
