@@ -100,6 +100,9 @@ function main {
 	REPODIR=`echo $1 | sed -e 's/\//____/g'`
         if [ -f $__TMP_FILE ]; then
 	    LASTREVGITFILE=`cat $__TMP_FILE | grep "$REPODIR" | cut -d"=" -f2`
+	    if [ -z "$LASTREVGITFILE" ]; then
+		LASTREVGITFILE=`git log --pretty=format:%H | tail -1`
+	    fi
 	else
 	    # first commit ever
 	    LASTREVGITFILE=`git log --pretty=format:%H | tail -1`
