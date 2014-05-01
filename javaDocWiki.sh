@@ -58,7 +58,7 @@ function create_doc {
     mkdir -p $TMP_SUZ_DIR
 
     # create documentation
-    javadoc $1 -d "$TMP_DIR" -nonavbar -nohelp -noindex -notree -quiet
+    javadoc $1 -d "$TMP_DIR" -nonavbar -nohelp -noindex -notree -quiet -private
 
     FILENAMEORG=$(basename "$1")
     FILENAME="${FILENAMEORG%.*}".html
