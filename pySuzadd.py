@@ -10,20 +10,20 @@
 #
 #
 # TODO
-# * mail can be sent at the end to inform that page has been
-#   created/updated,
 # * configuration file containing:
 #   - wiki address, login and password of bot,
 #   - categories by default
 #
+
 # exit codes
 __FILE_ERROR = 2                    # file error
 
 import mwclient, sys
 
+art_name = sys.argv[2]
 site = mwclient.Site('wiki_address', force_login=False)
 site.login('wiki_login', 'wiki_password')
-page = site.Pages[sys.argv[2]]
+page = site.Pages[art_name]
 page.edit()
 
 categories='[[Category:Foo]][[Category:Bar]]'
@@ -41,4 +41,12 @@ text += categories
 
 f.close()
 page.save(text, None)
+
+# email
+from_addr = "foo"
+to_addrs = ["foo@bar.com", "foo@bar2.com"]
+username = "email_username"
+password = "email_password"
+server = smtplib.SMTP('stmp_server')
+email_text = "Subject: [{0}] {1}\n".format("WIKI", art_name) + "Hello\nArticle: " + art_name + " has been created/updated"
 sys.exit(0)
