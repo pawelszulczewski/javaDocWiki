@@ -39,6 +39,7 @@ function check_if_installed {
 
 # checks if all necessary software is installed
 function check_soft {
+    check_if_installed 'mktemp'
     check_if_installed 'git'
     check_if_installed 'svn'
     check_if_installed 'javadoc'
@@ -52,8 +53,8 @@ function check_soft {
 function create_doc {
 
     # temporary stuff
-    TMP_DIR=/tmp/suzuki_`date +%s`
-    TMP_SUZ_DIR=$TMP_DIR/suziki/
+    TMP_DIR=`mktemp -d`
+    TMP_SUZ_DIR=$TMP_DIR/wiki/
 
     mkdir -p $TMP_SUZ_DIR
 
