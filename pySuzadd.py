@@ -23,7 +23,7 @@ import mwclient, sys
 art_name = sys.argv[2]
 site = mwclient.Site('wiki_address', force_login=False)
 
-# for Wiki available on http://wiki_address/wiki, pleae use
+# for Wiki available on https://wiki_address/wiki, please use
 # 
 # wiki_addrs = ('https','wiki_address')
 # wiki_path = '/wiki/'
