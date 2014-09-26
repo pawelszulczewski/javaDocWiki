@@ -18,7 +18,7 @@
 # exit codes
 __FILE_ERROR = 2                    # file error
 
-import mwclient, sys
+import mwclient, smtplib, sys
 
 art_name = sys.argv[2]
 site = mwclient.Site('wiki_address', force_login=False)
@@ -57,4 +57,8 @@ username = "email_username"
 password = "email_password"
 server = smtplib.SMTP('stmp_server')
 email_text = "Subject: [{0}] {1}\n".format("WIKI", art_name) + "Hello\nArticle: " + art_name + " has been created/updated"
+server.starttls()
+server.login (username, password)
+server.sendmail (from_addr, to_addrs, email_text)
+server.quit()
 sys.exit(0)
