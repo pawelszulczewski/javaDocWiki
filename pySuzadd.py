@@ -22,6 +22,14 @@ import mwclient, sys
 
 art_name = sys.argv[2]
 site = mwclient.Site('wiki_address', force_login=False)
+
+# for Wiki available on http://wiki_address/wiki, pleae use
+# 
+# wiki_addrs = ('https','wiki_address')
+# wiki_path = '/wiki/'
+#
+# site = mwclient.Site(wiki_addrs, wiki_path, force_login=False)
+
 site.login('wiki_login', 'wiki_password')
 page = site.Pages[art_name]
 page.edit()
